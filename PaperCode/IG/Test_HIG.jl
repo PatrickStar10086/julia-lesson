@@ -132,7 +132,7 @@ include("makespan.jl")
 
 for i in 1:2
     
-    filenm = "C:/Users/刘延硕/Desktop/模型调试/3stage model/Ins_10_5_0.4_0.6_1.jld"  
+    filenm = "D:/gitworkspace/julia-lesson/PaperCode/IG/Ins_20_5_0.4_0.6_1.jld"  
     J = load(filenm,"JJ")     # Number of orders
     M = load(filenm,"MM")     # Number of machines
     p = load(filenm,"pp") 

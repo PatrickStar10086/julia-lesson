@@ -56,7 +56,7 @@ function Data_Generation_IPMSP(J,M,tau,R,index1)
 
     # i = 3
 
-    filenm = join(["C:/Users/刘延硕/Desktop/IG/Ins_", string(J), "_", string(M), "_", string(tau), "_", string(R), "_", string(index1), ".jld"])
+    filenm = join(["D:/gitworkspace/julia-lesson/PaperCode/IG/Ins_", string(J), "_", string(M), "_", string(tau), "_", string(R), "_", string(index1), ".jld"])
     save(filenm, "JJ",J, "MM", M, "pp", p, "dd", d, "betabeta",beta, "tautau", tau, "RR", R)
     # return J, M, F, p, a, q, r, d, beta, tau, R
   
@@ -77,7 +77,7 @@ end
 
 
 
-filenm = join(["C:/Users/刘延硕/Desktop/IG/Ins_", string(J), "_", string(M), "_", string(tau), "_", string(R), "_", string(index1), ".jld"])
+filenm = join(["D:/gitworkspace/julia-lesson/PaperCode/IG/Ins_", string(J), "_", string(M), "_", string(tau), "_", string(R), "_", string(index1), ".jld"])
 
 # println("J = ", J)
 # println("M = ", M)
