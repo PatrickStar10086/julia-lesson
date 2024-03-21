@@ -1,6 +1,6 @@
 """
 
-The function finds the best permutation sequence by insrting order k in any position of a sequence
+The function finds the best permutation sequence by inserting order k in any position of a sequence
 
 """
 
