@@ -74,7 +74,7 @@ model = Model(Gurobi.Optimizer)
 @constraint(model,[i in 1:N], sum(sum(cibl[i, b, l]) for b in 1:B for l in 1:L) == 1)    #一个工件只能在一条生产线的一个模台内加工
 @constraint(model,[i in 1:N,b in 1:B,l in 1:L], cibl[i, b, l] <= gbl[b, l])    #工件只能放入被激活的模台
 @constraint(model,[b in 1:B,l in 1:L], gbl[b, l] <= sum(cibl[i, b, l] for i in 1:N))    #生产线上至少存在一个工件需要加工才会激活模台
-@constraint(model,[b in 1:B-1,l in 1:L], gbl[b+1, l] <= gbl[b, l])   #按顺序启用锚台
+# @constraint(model,[b in 1:B-1,l in 1:L], gbl[b+1, l] <= gbl[b, l])   #按顺序启用锚台
 @constraint(model,[i in 1:N,b in 1:B,l in 1:L], x[i] + k[i] * ei[i] + (1 - ei[i]) * g[i] <= WB + A * (1 - cibl[i, b, l]))     # 工件宽度不能超过模台宽度
 @constraint(model,[i in 1:N,b in 1:B,l in 1:L], y[i] + g[i] * ei[i] + (1 - ei[i]) * k[i] <= HB + A * (1 - cibl[i, b, l]))     # 工件高度不能超过模台高度
 @constraint(model,[i in 1:N,j in 1:N,i!=j], x[i] + k[i] * ei[i] + (1 - ei[i]) * g[i] <= x[j] + WB * (1 - plij[i, j]))     # 工件横坐标不能重叠

@@ -9,7 +9,7 @@ model = Model(HiGHS.Optimizer)
 @objective(model, Min, 12x + 20y)
 @constraint(model, c1, 6x + 8y >= 100)
 @constraint(model, c2, 7x + 12y >= 120)
-# print(model)
+print(model)
 
 optimize!(model)
 print("JuMP_and_HiHGS.jl   end\n")
