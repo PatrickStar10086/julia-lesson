@@ -11,15 +11,15 @@ Random.seed!(1) # 设置随机种子
 # t = rand(low:high, n, m) # 每个工件在每台机器上的加工时间
 
 t = [[42 42 80 10 98]
-[72 68 96 42 75]
-[ 1 21 32 95 28]
-[30 87 69 53 79]
-[15  3 87 69 11]
-[10 67 89 32 45]
-[19 42  9 68 90]
-[35 56  4 83 30]
-[40 14 17  2 29]
-[54 20 87 75 13]] # 每个工件在每台机器上的加工时间
+    [72 68 96 42 75]
+    [1 21 32 95 28]
+    [30 87 69 53 79]
+    [15 3 87 69 11]
+    [10 67 89 32 45]
+    [19 42 9 68 90]
+    [35 56 4 83 30]
+    [40 14 17 2 29]
+    [54 20 87 75 13]] # 每个工件在每台机器上的加工时间
 
 println(t)
 # 创建模型
@@ -40,7 +40,7 @@ model = Model(Gurobi.Optimizer)
 @constraint(model, C[1, 1] >= sum(x[i, 1] * t[i, 1] for i in 1:n))
 @constraint(model, [k = 2:n, j = 1:m], C[k, j] >= C[k-1, j] + sum(x[i, k] * t[i, j] for i in 1:n))
 @constraint(model, [k = 1:n, j = 2:m], C[k, j] >= C[k, j-1] + sum(x[i, k] * t[i, j] for i in 1:n))
-@constraint(model, [k = 1:n, j = 1:m], C[k,j]>=0)
+@constraint(model, [k = 1:n, j = 1:m], C[k, j] >= 0)
 
 # 设置求解器的最长运行时间为1小时（3600s）
 set_optimizer_attribute(model, "TimeLimit", 3600)
