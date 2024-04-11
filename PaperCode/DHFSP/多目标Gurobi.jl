@@ -82,7 +82,6 @@ H = 1000  # 一个足够大的数
 @constraint(model, [i in 1:n-1, j in i+1:n,  f in 1:F, g in 1:m], C[i, g] >= C[j, g] + u[j, i, f, g] + p[i, f, g] - (1 - z[j, i, f, g]) * H)
 @constraint(model, [i in 1:n-1, j in i+1:n,  f in 1:F, g in 1:m], C[j, g]>= C[i, g]  + u[i, j, f, g] + p[j, f, g] - z[j, i, f, g] * H) # 工序j是否先于工件i在工厂f的车间g的机器k上加工
 @constraint(model, [i in 1:n],Cmax >= C[i, m]) # 工件i的加工完成时间等于工件i在车间m的加工完成时间
-# @constraint(model, [i in 1:n], Cmax >= Cf[i]) # 最大完工时间大于等于工件i的加工完成时间
 
 
 # 求解优化问题
